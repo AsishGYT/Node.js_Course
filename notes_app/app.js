@@ -17,20 +17,85 @@
 
 
 const validator = require('validator')
-
+const yargs = require('yargs')
 const chalk = require("chalk")
+const { demandOption } = require('yargs')
 
-console.log(chalk.blue.bold('Its not about making money. its about sending a message'))
-console.log(chalk.greenBright('Dark Kinght : where is she. where is she. WHERE, IS, SHE'))
+//customise yargs version
+yargs.version('1.1.0')
+
+yargs.command({
+    command: 'add',
+    describe: 'add new notes',
+    builder: {
+        title: {
+            describe: 'note title',
+            demandOption: true,
+            type: 'string'
+        },
+
+        body: {
+            describe: 'notes body',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: function(argv){
+        console.log('title ' + argv.title)
+        console.log("body " + argv.body)
+    }
+})
+
+yargs.command({
+    command: 'remove',
+    describe: 'remove notes',
+    handler: function(){
+        console.log('removing notes')
+    }
+})
+
+yargs.command({
+    command: 'list',
+    describe: 'list new notes',
+    
+    handler: function(){
+        console.log('listing notes')
+    }
+})
+
+yargs.command({
+    command: 'read',
+    describe: 'read notes',
+    handler: function(){
+        console.log('reading notes')
+    }
+})
 
 
-console.log(validator.isEmail('asishsairam.illa@gytworkz.com'))
+// console.log(chalk.blue.bold('Its not about making money. its about sending a message'))
+// console.log(chalk.greenBright('Dark Kinght : where is she. where is she. WHERE, IS, SHE'))
 
-console.log(validator.isURL('https://instagram.com'))
+//const command = process.argv[2]
+
+//console.log(process.argv)
+//console.log(yargs.argv)
+yargs.parse()
+
+// if(command === 'add'){
+//     console.log("adding notes")
+// } else if (command === 'remove'){
+//     console.log('removing notes')
+// }
+
+// console.log(validator.isEmail('asishsairam.illa@gytworkz.com'))
+
+// console.log(validator.isURL('https://instagram.com'))
 
 // 1. notes js file, get notes function returning a string
 // 2. export getnotes and from app js call the fn
 
-const getNotes = require('./notes.js')
-const msg = getNotes()
-console.log(msg)  
+// const getNotes = require('./notes.js')
+// const msg = getNotes()
+// console.log(msg)  
+
+
