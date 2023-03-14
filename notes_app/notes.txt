@@ -1,0 +1,4 @@
+This file was created by Node.js. 
+ This is a message to Gotham. 
+ You either die a hero or live long enough to see yourself become the villian.
+ Because I...AM...BATMAN
