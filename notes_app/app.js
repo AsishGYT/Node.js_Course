@@ -15,11 +15,14 @@
 // const power_fn = power(3,2)
 // console.log(power_fn)
 
+//repl
 
-const validator = require('validator')
+const notes = require('./notes.js')
+
+//const validator = require('validator')
 const yargs = require('yargs')
 const chalk = require("chalk")
-const { demandOption } = require('yargs')
+//const { demandOption, require } = require('yargs')
 
 //customise yargs version
 yargs.version('1.1.0')
@@ -41,8 +44,10 @@ yargs.command({
         }
     },
     handler: function(argv){
-        console.log('title ' + argv.title)
-        console.log("body " + argv.body)
+
+        notes.addnotes(argv.title, argv.body)
+        //console.log('title ' + argv.title)
+        //console.log("body " + argv.body)
     }
 })
 
@@ -79,6 +84,7 @@ yargs.command({
 
 //console.log(process.argv)
 //console.log(yargs.argv)
+
 yargs.parse()
 
 // if(command === 'add'){
@@ -95,7 +101,7 @@ yargs.parse()
 // 2. export getnotes and from app js call the fn
 
 // const getNotes = require('./notes.js')
-// const msg = getNotes()
-// console.log(msg)  
+const msg = notes.getNotes()
+console.log(msg)  
 
 
